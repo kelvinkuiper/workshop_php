@@ -2,22 +2,23 @@
 $servername = "localhost";
 $username = "homestead";
 $password = "secret";
-$dbname = "workshop_php";
+$dbname = "workshop_php"; //string
 
 // Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
+$mysqli = new mysqli($servername, $username, $password, $dbname); //object
 
 // Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
+if ($mysqli->connect_error) {
+    die("Connection failed: " . $mysqli->connect_error);
 }
 
 $sql = "SELECT id, post_date, post_title FROM news ORDER BY post_date DESC";
-$result = $conn->query($sql);
+$result = $mysqli->query($sql);
 
 // Check query
-
-
+if($result == false) {
+    die('Query klopt niet: ' . $mysqli->error);
+}
 ?>
 <table>
     <?php while($row = $result->fetch_assoc()): ?>
