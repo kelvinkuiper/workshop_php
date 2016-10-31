@@ -41,24 +41,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
     } else {
         die('Het is gelukt');
     }
-
-
-    
-
 }
-
-
-
-
-// Gaan we de waarden in variabelen opslaan
-
-// Gaan de variabelen controleren
-
-// Gaan we de waarden opslaan in database
-
-echo '<pre>';
-var_dump($_SERVER);
-echo '</pre>';
 ?>
 <h1>Nieuws toevoegen</h1>
 <form method="post">
