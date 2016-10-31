@@ -1,16 +1,5 @@
 <?php
-$servername = "localhost";
-$username = "homestead";
-$password = "secret";
-$dbname = "workshop_php"; //string
-
-// Create connection
-$mysqli = new mysqli($servername, $username, $password, $dbname); //object
-
-// Check connection
-if ($mysqli->connect_error) {
-    die("Connection failed: " . $mysqli->connect_error);
-}
+include('connect.php');
 
 $sql = "SELECT id, post_date, post_title FROM news ORDER BY post_date DESC";
 $result = $mysqli->query($sql);
@@ -24,7 +13,11 @@ if($result == false) {
     <?php while($row = $result->fetch_assoc()): ?>
     <tr>
         <td><?php echo $row['post_date'] ?></td>
-        <td><?php echo $row['post_title'] ?></td>
+        <td>
+            <a href="show.php?id=<?php echo $row['id'] ?>">
+                <?php echo $row['post_title'] ?>
+            </a>
+        </td>
     </tr>
     <?php endwhile; ?>
 </table>
